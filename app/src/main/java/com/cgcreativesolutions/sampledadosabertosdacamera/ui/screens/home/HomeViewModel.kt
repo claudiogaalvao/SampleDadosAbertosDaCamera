@@ -1,38 +1,24 @@
-package com.cgcreativesolutions.sampledadosabertosdacamera
+package com.cgcreativesolutions.sampledadosabertosdacamera.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cgcreativesolutions.sampledadosabertosdacamera.model.EventModel
 import com.cgcreativesolutions.sampledadosabertosdacamera.model.EventType
 import com.cgcreativesolutions.sampledadosabertosdacamera.model.mockEvents
+import com.cgcreativesolutions.sampledadosabertosdacamera.ui.screens.home.model.FilterUiModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-data class FilterUiModel(
-    val eventType: EventType,
-    var isSelected: Boolean
-)
+class HomeViewModel: ViewModel() {
 
-data class MainState(
-    val filters: List<FilterUiModel> = emptyList(),
-    val events: List<EventModel> = emptyList()
-)
-
-sealed class MainEvents {
-    data class FilterItemSelected(val itemSelected: EventType): MainEvents()
-}
-
-class MainViewModel: ViewModel() {
-
-    private val _state: MutableStateFlow<MainState> = MutableStateFlow(MainState())
+    private val _state: MutableStateFlow<HomeState> = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()
 
     init {
         viewModelScope.launch {
             _state.emit(
-                MainState(
+                HomeState(
                     filters = getMockFilters(),
                     events = mockEvents
                 )
@@ -49,9 +35,9 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun onEvent(mainEvents: MainEvents) {
+    fun onEvent(mainEvents: HomeEvents) {
         when(mainEvents) {
-            is MainEvents.FilterItemSelected -> handleFilterItemSelected(mainEvents.itemSelected)
+            is HomeEvents.FilterItemSelected -> handleFilterItemSelected(mainEvents.itemSelected)
         }
     }
 
@@ -78,8 +64,8 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    private fun getInitialState(): MainState {
-        return MainState(
+    private fun getInitialState(): HomeState {
+        return HomeState(
             filters = getMockFilters(),
             events = mockEvents
         )
