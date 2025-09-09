@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SampleDadosAbertosDaCamera</string>
+
+    <string name="theme_health">Health</string>
+    <string name="theme_technology">Technology</string>
+    <string name="theme_politics">Politics</string>
+    <string name="theme_education">Education</string>
+    <string name="theme_energy">Energy</string>
+    <string name="theme_economy">Economy</string>
+    <string name="theme_transport">Transport</string>
+
+    <string name="type_public_hearing">Audiência Pública</string>
+    <string name="type_deliberative_meeting">Reunião Deliberativa</string>
+    <string name="type_general_commission">Comissão Geral</string>
+    <string name="type_roundtable">Mesa Redonda</string>
+    <string name="type_debate">Debate</string>
+
+    <!-- Descrições -->
+    <string name="desc_public_hearing">Encontro aberto para ouvir especialistas, autoridades e cidadãos sobre um tema específico.</string>
+    <string name="desc_deliberative_meeting">Reunião formal onde parlamentares discutem e votam propostas legislativas.</string>
+    <string name="desc_general_commission">Sessão ampliada para debater assuntos de grande relevância nacional.</string>
+    <string name="desc_roundtable">Discussão em formato de mesa redonda, com diferentes pontos de vista sobre o tema.</string>
+    <string name="desc_debate">Troca de argumentos entre parlamentares e convidados sobre questões em pauta.</string>
+
+</resources>
