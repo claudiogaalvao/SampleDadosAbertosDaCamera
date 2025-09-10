@@ -1,5 +1,6 @@
 package com.cgcreativesolutions.sampledadosabertosdacamera.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,9 +16,16 @@ import com.cgcreativesolutions.sampledadosabertosdacamera.model.EventModel
 import com.cgcreativesolutions.sampledadosabertosdacamera.ui.mapper.displayName
 
 @Composable
-fun EventCard(event: EventModel, modifier: Modifier = Modifier) {
+fun EventCard(
+    modifier: Modifier = Modifier,
+    event: EventModel,
+    onClick: (eventName: String) -> Unit
+) {
+    val eventName = event.type.displayName()
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(enabled = true, onClick = { onClick(eventName) }),
         colors = CardDefaults.cardColors().copy(
             containerColor = Color.White
         )
@@ -26,7 +34,7 @@ fun EventCard(event: EventModel, modifier: Modifier = Modifier) {
             modifier = Modifier.padding(12.dp),
         ) {
             Text(
-                text = event.type.displayName(),
+                text = eventName,
                 fontWeight = FontWeight.Bold
             )
             Text(text = event.description)

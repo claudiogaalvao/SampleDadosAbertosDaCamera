@@ -45,7 +45,8 @@ import com.cgcreativesolutions.sampledadosabertosdacamera.ui.theme.SampleDadosAb
 fun HomeScreen(
     modifier: Modifier = Modifier,
     state: HomeState,
-    onEvent: (event: HomeEvents) -> Unit
+    onEvent: (HomeEvents) -> Unit,
+    onNavigate: (HomeNavigation) -> Unit
 ) {
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
@@ -144,7 +145,15 @@ fun HomeScreen(
         ) { event ->
             EventCard(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                event = event
+                event = event,
+                onClick = { eventName ->
+                    onNavigate(
+                        HomeNavigation.ToEventDetails(
+                            eventId = event.id,
+                            eventType = eventName
+                        )
+                    )
+                }
             )
         }
         item {
@@ -169,7 +178,8 @@ fun HomePreview() {
                 filters = filtersMock,
                 events = mockEvents,
             ),
-            onEvent = {}
+            onEvent = {},
+            onNavigate = {}
         )
     }
 }
