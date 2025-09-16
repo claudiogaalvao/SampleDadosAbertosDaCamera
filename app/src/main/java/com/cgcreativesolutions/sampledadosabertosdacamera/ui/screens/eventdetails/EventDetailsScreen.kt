@@ -9,9 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun EventDetailsScreen(eventId: Int, eventType: String) {
+fun EventDetailsScreen(
+    modifier: Modifier = Modifier,
+    eventId: Int,
+    eventType: String
+) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
