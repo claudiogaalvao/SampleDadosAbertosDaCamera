@@ -1,5 +1,6 @@
 package com.cgcreativesolutions.sampledadosabertosdacamera.ui.screens.home
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -26,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +39,7 @@ import com.cgcreativesolutions.sampledadosabertosdacamera.ui.components.EventFil
 import com.cgcreativesolutions.sampledadosabertosdacamera.ui.mapper.displayDescription
 import com.cgcreativesolutions.sampledadosabertosdacamera.ui.mapper.displayName
 import com.cgcreativesolutions.sampledadosabertosdacamera.ui.screens.home.model.FilterUiModel
-import com.cgcreativesolutions.sampledadosabertosdacamera.ui.theme.SampleDadosAbertosDaCameraTheme
+import com.cgcreativesolutions.sampledadosabertosdacamera.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -99,7 +100,7 @@ fun HomeScreen(
     LazyColumn (
         modifier = modifier
             .fillMaxSize()
-            .background(Color.LightGray),
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
@@ -126,7 +127,8 @@ fun HomeScreen(
                 Text(
                     text = "Eventos do dia",
                     fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Icon(
                     modifier = Modifier.clickable(
@@ -136,7 +138,8 @@ fun HomeScreen(
                         }
                     ),
                     imageVector = Icons.AutoMirrored.Filled.HelpOutline,
-                    contentDescription = "Help"
+                    contentDescription = "Help",
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
         }
@@ -169,10 +172,17 @@ private val filtersMock = EventType.entries.map { theme ->
     )
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark"
+)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight"
+)
 @Composable
 fun HomePreview() {
-    SampleDadosAbertosDaCameraTheme {
+    AppTheme {
         HomeScreen(
             state = HomeState(
                 filters = filtersMock,

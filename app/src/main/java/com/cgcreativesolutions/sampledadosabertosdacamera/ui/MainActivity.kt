@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.cgcreativesolutions.sampledadosabertosdacamera.ui.app.App
-import com.cgcreativesolutions.sampledadosabertosdacamera.ui.screens.home.HomeViewModel
-import com.cgcreativesolutions.sampledadosabertosdacamera.ui.theme.SampleDadosAbertosDaCameraTheme
+import com.cgcreativesolutions.sampledadosabertosdacamera.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -14,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SampleDadosAbertosDaCameraTheme {
+            AppTheme {
                 App()
             }
         }

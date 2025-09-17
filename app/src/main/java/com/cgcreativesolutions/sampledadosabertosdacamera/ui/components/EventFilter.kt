@@ -11,10 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.cgcreativesolutions.sampledadosabertosdacamera.model.EventType
@@ -36,14 +36,14 @@ fun EventFilter(
         Spacer(modifier = Modifier.width(4.dp))
         filters.map { filter ->
             val containerColor = if (filter.isSelected) {
-                Color.Green
+                MaterialTheme.colorScheme.primaryContainer
             } else {
-                Color.DarkGray
+                MaterialTheme.colorScheme.surfaceVariant
             }
             val textColor = if (filter.isSelected) {
-                Color.Black
+                MaterialTheme.colorScheme.onPrimaryContainer
             } else {
-                Color.White
+                MaterialTheme.colorScheme.onSurfaceVariant
             }
             Text(
                 modifier = Modifier

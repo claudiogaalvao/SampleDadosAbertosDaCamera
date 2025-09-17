@@ -17,12 +17,7 @@ class HomeViewModel: ViewModel() {
 
     init {
         viewModelScope.launch {
-            _state.emit(
-                HomeState(
-                    filters = getMockFilters(),
-                    events = mockEvents
-                )
-            )
+            _state.emit(getInitialState())
         }
     }
 

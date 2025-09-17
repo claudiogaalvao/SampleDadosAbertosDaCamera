@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,8 +27,9 @@ fun EventCard(
         modifier = modifier
             .fillMaxWidth()
             .clickable(enabled = true, onClick = { onClick(eventName) }),
-        colors = CardDefaults.cardColors().copy(
-            containerColor = Color.White
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant, // fundo do card
+            contentColor = MaterialTheme.colorScheme.onSurface  // cor padrão dos textos
         )
     ) {
         Column(
